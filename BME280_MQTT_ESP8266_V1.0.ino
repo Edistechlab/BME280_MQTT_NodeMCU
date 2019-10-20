@@ -22,10 +22,10 @@ SDA         D2 / GPIO4
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
 
-#define wifi_ssid "MacWorld"
-#define wifi_password "E2943228373F65C0"
+#define wifi_ssid "Your_SSID"
+#define wifi_password "Your_PW"
 
-#define mqtt_server "PiHomeserver.local"
+#define mqtt_server "Your_MQTT-server"
 #define mqtt_user "your_username"         
 #define mqtt_password "your_password"     
 
