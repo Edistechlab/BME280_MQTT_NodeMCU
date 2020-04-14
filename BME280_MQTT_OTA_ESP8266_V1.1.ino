@@ -8,11 +8,12 @@ Changelog:
 OTA implementation 
 Placeholder for inTopics
  
-Required libraries (sketch -> include library -> manage libraries)
- - ESP8266WiFi by Ivan Grokhotkov
- - PubSubClient by Nick ‘O Leary
- - BME280 and sensor library by Adafruit
- - ArduinoOTA
+Required libraries (Tools -> manage libraries)
+ - PubSubClient by Nick O'Leary V2.7.0  
+ - Adafruit BME280 Library V2.0.1
+ - Adafruit Unified Sensor V1.1.2
+Required Board (Tools -> Board -> Boards Manager...)
+ - Board: esp8266 by ESP8266 Community V2.6.3
 
 Wirering for the BME280 Sensor:
 BME280      NodeMCU
@@ -24,6 +25,7 @@ SDA         D2 / GPIO4
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <Wire.h>
 #include <ArduinoOTA.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
@@ -69,7 +71,7 @@ void setup() {
   client.setCallback(callback);
   while(!Serial);    // time to get serial running
     unsigned status;
-    status = bme.begin();  
+    status = bme.begin(0x76, &Wire);   //I2C address is either 0x76 or 0x77
     if (!status) {
         Serial.println("Could not find a valid BME280 sensor, check wiring, address, sensor ID!");
         while (1);
