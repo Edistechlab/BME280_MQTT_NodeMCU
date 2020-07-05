@@ -141,7 +141,7 @@ void getBME280Values() {
 
     if (checkBound(newHum, hum, diff)) {
       hum = newHum;
-      Serial.print("New Huminity:");
+      Serial.print("New Humidity:");
       Serial.println(String(hum).c_str());
       client.publish(humidity_topic, String(hum).c_str(), true);
     }
